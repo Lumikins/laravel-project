@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('name', 100);
 
             // product description
-            $table->longText('description');
+            $table->text('description');
 
             // product price
             $table->decimal('price', 5, 2);
@@ -39,7 +39,7 @@ return new class extends Migration
             $table->string('reference', 50);
 
             // foreign key pointing to the id column in the categoris table
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
 
         });

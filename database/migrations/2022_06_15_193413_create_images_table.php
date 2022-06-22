@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->binary('image');
+            $table->string('path_image');
 
             // foreign key poiting to the id column in the product table
-            $table->unsignedBigInteger('image_id');
-            $table->foreign('image_id')->references('id')->on('products');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
