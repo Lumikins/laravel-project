@@ -15,8 +15,8 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Product::factory()->create([
-            'name' => Str::random(10),
-        ]);
+        // \App\Models\Product::factory()->create([
+        //     'name' => Str::random(10),
+        // ]);
     }
 }
