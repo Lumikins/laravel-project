@@ -1,3 +1,7 @@
+@extends('layout')
+
+@section('content')
+
 <h1>{{$heading}}</h1>
 @unless (count($products) == 0)
     @foreach ($products as $product)
@@ -9,3 +13,5 @@
   @else
     <p>No products found</p>
 @endunless
+
+@endsection

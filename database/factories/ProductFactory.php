@@ -17,7 +17,13 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->randomElement(['Shirt', 'Skirt', 'Pants', 'Coat', 'Shoes', 'Hat']),
+            'description' => $this->faker->paragraph(5),
+            'price' => $this->faker->randomFloat(2, 0, 100),
+            'is_published' => $this->faker->boolean(),
+            'is_sale' => $this->faker->boolean(),
+            'reference' => $this->faker->bothify('??##?###?#??#?#?'),
+            'size' => $this->faker->randomElement(['XS', 'S', 'M', 'L', 'XL']),
         ];
     }
 }
