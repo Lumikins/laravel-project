@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+@include('partials._search')
 
 <h2>{{$product['name']}}</h2>
 <p>{{$product['description']}}</p>
