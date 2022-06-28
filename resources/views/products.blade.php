@@ -16,22 +16,21 @@
             </h3>
             <div class="text-xl font-bold mb-4">WeFashion</div>
               <ul class="flex">
+                @if (($product->category_id) == 1)
                 <li class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                  <a href="#">Laravel</a>
+                  <a href="#">Man</a>
                 </li>
+                @else
                 <li class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                  <a href="#">API</a>
+                  <a href="#">Woman</a>
                 </li>
-                <li class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                  <a href="#">Backend</a>
-                </li>
-                <li class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                  <a href="#">Vue</a>
-                </li>
+                @endif
               </ul>
-            <div class="text-lg mt-4">
-              <i class="fa-solid fa-location-dot"></i> Boston, MA
-            </div>
+              @if ($product['is_sale'])
+              <div class="text-lg mt-4 uppercase">
+                <i class="fa-solid fa-hand-holding-dollar"></i> on sale
+              </div>
+              @endif
           </div>
       </div>
     </div>
