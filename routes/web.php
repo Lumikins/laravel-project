@@ -13,7 +13,7 @@ use App\Models\Product;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// display all products
 Route::get('/', function () {
     return view('products', [
         'heading' => "Products",
@@ -21,8 +21,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/products/{id}', function ($id){
+// single product display
+Route::get('/products/{product}', function (Product $product){
     return view('product', [
-        'product' => Product::find($id)
+        'product' => $product
     ]);
 });
