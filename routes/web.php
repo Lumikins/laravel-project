@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 
@@ -14,16 +15,13 @@ use App\Models\Product;
 |
 */
 // display all products
-Route::get('/', function () {
-    return view('products', [
-        'heading' => "Products",
-        'products' => Product::all()
-    ]);
-});
+Route::get('/', [ProductController::class, 'index']);
+
+// create form
+Route::get('/products/create', [ProductController::class, 'create']);
+
+// store product data
+Route::post('/products', [ProductController::class, 'store']);
 
 // single product display
-Route::get('/products/{product}', function (Product $product){
-    return view('product', [
-        'product' => $product
-    ]);
-});
+Route::get('/products/{product}', [ProductController::class, 'show']);

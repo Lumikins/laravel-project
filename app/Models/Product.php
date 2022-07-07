@@ -11,6 +11,13 @@ class Product extends Model
 {
     use HasFactory;
 
+    // public function search($request){
+    //   if ($filters['search'] ?? false) {
+    //     $query->where('name', 'like', '%' . request('search') . '%')
+    //       ->orWhere('description', 'like', '%' . request('search') . '%');
+    //   }
+    // }
+
     // each product can only have one category and one image
     public function category(){
       return $this->belongsTo(Category::class);

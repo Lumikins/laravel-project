@@ -27,13 +27,8 @@ class DatabaseSeeder extends Seeder
             'gender' => 'man'
         ]);
 
-        Product::factory(6)->create()->each(function($product) use($woman, $man){
-            $product->category()->associate($woman);
-            $product->save();
-        });
-
-        Product::factory(6)->create()->each(function($product) use($woman, $man){
-            $product->category()->associate($man);
+        Product::factory(10)->create()->each(function($product) use($woman, $man){
+            $product->category()->associate(rand(0, 1) == 1 ? $man:$woman);
             $product->save();
         });
 

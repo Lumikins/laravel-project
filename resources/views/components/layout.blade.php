@@ -12,6 +12,7 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     />
+    <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -34,16 +35,17 @@
               <a href="register.html" class="hover:text-weFashion"><i class="fa-solid fa-user-plus"></i> Register</a>
             </li>
             <li>
-              <a href="login.html" class="hover:text-weFashion"><i class="fa-solid fa-arrow-right-to-bracket"></i>Login</a>
+              <a href="login.html" class="hover:text-weFashion"><i class="fa-solid fa-right-to-bracket mr-2"></i>Login</a>
             </li>
           </ul>
       </nav>
     <main>
-  {{-- View output --}}
-  @yield('content')
+      {{$slot}}
     </main>
       <footer class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-weFashion text-white h-24 mt-24 opacity-90 md:justify-center">
         <p class="ml-2">footer according to specifications</p>
+        <a href="/products/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">Add product</a>
       </footer>
+      <x-flash-message />
     </body>
 </html>
