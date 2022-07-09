@@ -3,7 +3,7 @@
     <div class="mx-4">
       <x-card-frame class="p-10">
         <div class="flex flex-col items-center justify-center text-center">
-          <img class="w-48 mr-6 mb-6" src="{{asset('images/no-image.png')}}" alt=""/>
+          <img class="w-48 mr-6 mb-6" src="{{$product->image ? asset('storage/' . $product->image) : asset('/images/no-image.png')}}" alt=""/>
             <h3 class="text-2xl mb-2 font-bold">{{$product->name}}</h3>
               <div class="text-xl italic mb-4">{{$product->price}}&euro;</div>
                 <ul class="flex">

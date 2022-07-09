@@ -5,7 +5,7 @@
         Create new product
       </h2>
     </header>
-    <form method="POST" action="/products">
+    <form method="POST" action="/products" enctype="multipart/form-data">
       @csrf
       <div class="mb-6">
         <label for="name" class="inline-block text-lg mb-2">Product Name</label>
@@ -75,10 +75,13 @@
             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
           @enderror
       </div>
-      {{-- <div class="mb-6">
+      <div class="mb-6">
         <label for="image" class="inline-block text-lg mb-2">Product Image</label>
           <input type="file" class="border border-gray-200 rounded p-2 w-full" name="image" />
-      </div> --}}
+          @error('image')
+          <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+          @enderror
+      </div>
       <div class="mb-6">
         <label for="description" class="inline-block text-lg mb-2">Product Description</label>
           <textarea class="border border-gray-200 rounded p-2 w-full" name="description" rows="10" value="{{old('description')}}" placeholder="Describe the product as best as possible"></textarea>

@@ -50,6 +50,10 @@ class ProductController extends Controller
       'description' => 'required',
     ]);
 
+    if ($request->hasFile('image')) {
+      $formFields['image'] = $request->file('image')->store('images', 'public');
+    }
+
     Product::create($formFields);
     return redirect('/')->with('message', 'Product added to database');
   }

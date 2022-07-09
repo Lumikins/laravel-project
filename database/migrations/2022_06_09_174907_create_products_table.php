@@ -19,6 +19,9 @@ return new class extends Migration
 
             // product name
             $table->string('name', 100);
+            
+            // product image
+            $table->string('image') -> nullable();
 
             // product description
             $table->text('description');
