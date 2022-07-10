@@ -57,4 +57,37 @@ class ProductController extends Controller
     Product::create($formFields);
     return redirect('/')->with('message', 'Product added to database');
   }
+
+  // show edit form
+  public function edit(Product $product){
+    return view('products.edit', ['product'=>$product]);
+  }
+
+    // update product data
+    public function update(Request $request, Product $product)
+    {
+      $formFields = $request->validate([
+        'name' => 'required',
+        'price' => 'required',
+        'is_sale' => 'required',
+        'is_published' => 'required',
+        'category_id' => 'required',
+        'size' => 'required',
+        'reference' => 'required',
+        'description' => 'required',
+      ]);
+  
+      if ($request->hasFile('image')) {
+        $formFields['image'] = $request->file('image')->store('images', 'public');
+      }
+  
+      $product->update  ($formFields);
+      return back()->with('message', 'Product updated successfully');
+    }
+
+    // delete product
+    public function destroy(Product $product){
+      $product->delete();
+      return redirect('/')->with('message', 'Product deleted successfully');
+    }
 }

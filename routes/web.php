@@ -23,5 +23,14 @@ Route::get('/products/create', [ProductController::class, 'create']);
 // store product data
 Route::post('/products', [ProductController::class, 'store']);
 
+// edit form
+Route::get('/products/{product}/edit', [ProductController::class, 'edit']);
+
+// update product
+Route::put('/products/{product}', [ProductController::class, 'update']);
+
+// delete product
+Route::delete('/products/{product}', [ProductController::class, 'destroy']);
+
 // single product display
 Route::get('/products/{product}', [ProductController::class, 'show']);

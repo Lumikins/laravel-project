@@ -31,6 +31,18 @@
               </div>
         </div>
       </x-card-frame>
+      <x-card-frame class="mt-4 p-2 flex space-x-6">
+        <a href="/products/{{$product->id}}/edit">
+          <i class="fa-solid fa-pencil">Edit</i>
+        </a>
+        <form method="POST" action="/products/{{$product->id}}">
+          @csrf
+          @method('DELETE')
+          <button class="text-red-500">
+            <i class="fa-solid fa-trash">Delete</i>
+          </button>
+      </form>
+      </x-card-frame>
     </div>
 </x-layout>
 
