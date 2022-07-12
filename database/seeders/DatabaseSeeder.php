@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
+use App\Models\User;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -27,17 +28,16 @@ class DatabaseSeeder extends Seeder
             'gender' => 'man'
         ]);
 
-        Product::factory(10)->create()->each(function($product) use($woman, $man){
+        $user = User::factory()->create([
+            'email' => 'admin@test.com',
+            'password' => '123456'
+        ]);
+
+        Product::factory(10)->create(['user_id'=>$user->id])->each(function($product) use($woman, $man){
             $product->category()->associate(rand(0, 1) == 1 ? $man:$woman);
             $product->save();
         });
 
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
 
         // Product::create([
         //     'name' => 'skirt',

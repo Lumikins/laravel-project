@@ -16,12 +16,6 @@ class ProductController extends Controller
     ]);
   }
 
-  // public function index(){
-  //   return view('products.index', [
-  //     'products' => Product::latest()->filter(request('search'))->get()
-  //   ]);
-  // }
-
   // show single product
   public function show(Product $product)
   {
@@ -53,41 +47,60 @@ class ProductController extends Controller
     if ($request->hasFile('image')) {
       $formFields['image'] = $request->file('image')->store('images', 'public');
     }
-
+    $formFields['user_id'] = auth()->id();
     Product::create($formFields);
     return redirect('/')->with('message', 'Product added to database');
   }
 
+
   // show edit form
-  public function edit(Product $product){
-    return view('products.edit', ['product'=>$product]);
+  public function edit(Product $product)
+  {
+    return view('products.edit', ['product' => $product]);
   }
 
-    // update product data
-    public function update(Request $request, Product $product)
-    {
-      $formFields = $request->validate([
-        'name' => 'required',
-        'price' => 'required',
-        'is_sale' => 'required',
-        'is_published' => 'required',
-        'category_id' => 'required',
-        'size' => 'required',
-        'reference' => 'required',
-        'description' => 'required',
-      ]);
-  
-      if ($request->hasFile('image')) {
-        $formFields['image'] = $request->file('image')->store('images', 'public');
-      }
-  
-      $product->update  ($formFields);
-      return back()->with('message', 'Product updated successfully');
+  // update product data
+  public function update(Request $request, Product $product)
+  {
+    // check if logged in user is owner
+    if ($product->user_id != auth()->id()) {
+      abort(403, 'Unauthorized action');
     }
 
-    // delete product
-    public function destroy(Product $product){
-      $product->delete();
-      return redirect('/')->with('message', 'Product deleted successfully');
+    $formFields = $request->validate([
+      'name' => 'required',
+      'price' => 'required',
+      'is_sale' => 'required',
+      'is_published' => 'required',
+      'category_id' => 'required',
+      'size' => 'required',
+      'reference' => 'required',
+      'description' => 'required',
+    ]);
+
+    if ($request->hasFile('image')) {
+      $formFields['image'] = $request->file('image')->store('images', 'public');
     }
+
+    $product->update($formFields);
+    return back()->with('message', 'Product updated successfully');
+  }
+
+  // delete product
+  public function destroy(Product $product)
+  {
+
+    // check if logged in user is owner
+    if ($product->user_id != auth()->id()) {
+      abort(403, 'Unauthorized action');
+    }
+    $product->delete();
+    return redirect('/')->with('message', 'Product deleted successfully');
+  }
+
+  // manage product
+  public function manage()
+  {
+    return view('products.manage', ['products' => request()->user()->products()->get()]);
+  }
 }

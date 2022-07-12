@@ -45,6 +45,9 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
 
+            // foreign key to users table
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+
             $table->timestamps();
 
         });

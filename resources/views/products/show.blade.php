@@ -31,7 +31,7 @@
               </div>
         </div>
       </x-card-frame>
-      <x-card-frame class="mt-4 p-2 flex space-x-6">
+      {{-- <x-card-frame class="mt-4 p-2 flex space-x-6">
         <a href="/products/{{$product->id}}/edit">
           <i class="fa-solid fa-pencil">Edit</i>
         </a>
@@ -41,22 +41,7 @@
           <button class="text-red-500">
             <i class="fa-solid fa-trash">Delete</i>
           </button>
-      </form>
-      </x-card-frame>
+        </form>
+      </x-card-frame> --}}
     </div>
 </x-layout>
-
-
-{{-- <p>{{$product['description']}}</p>
-
-@if ($product['is_published'])
-    <p>product published</p>
-@else
-    <p>product not published</p>
-@endif
-@if ($product['is_sale'])
-    <p>product on sale</p>
-@else
-    <p>product no on sale</p>
-@endif
-<p>refrence id: {{$product['reference']}}</p> --}}
