@@ -8,7 +8,7 @@
     <x-product-card :product="$product"/>
     @endforeach
   @else
-    <p>No products found</p>
+    <p>Aucun produit trouvé</p>
 @endunless
 </div>
 <div class="mt-6 p-4">

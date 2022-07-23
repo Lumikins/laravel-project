@@ -49,9 +49,8 @@ class ProductController extends Controller
     }
     $formFields['user_id'] = auth()->id();
     Product::create($formFields);
-    return redirect('/')->with('message', 'Product added to database');
+    return redirect('/')->with('message', 'Produit ajouté à la base de données');
   }
-
 
   // show edit form
   public function edit(Product $product)
@@ -64,7 +63,7 @@ class ProductController extends Controller
   {
     // check if logged in user is owner
     if ($product->user_id != auth()->id()) {
-      abort(403, 'Unauthorized action');
+      abort(403, 'Action non autorisée');
     }
 
     $formFields = $request->validate([
@@ -83,7 +82,7 @@ class ProductController extends Controller
     }
 
     $product->update($formFields);
-    return back()->with('message', 'Product updated successfully');
+    return back()->with('message', 'Produit mis à jour avec succès');
   }
 
   // delete product
@@ -92,15 +91,15 @@ class ProductController extends Controller
 
     // check if logged in user is owner
     if ($product->user_id != auth()->id()) {
-      abort(403, 'Unauthorized action');
+      abort(403, 'Action non autorisée');
     }
     $product->delete();
-    return redirect('/')->with('message', 'Product deleted successfully');
+    return redirect('/')->with('message', 'Produit supprimé avec succès');
   }
 
   // manage product
   public function manage()
   {
-    return view('products.manage', ['products' => request()->user()->products()->get()]);
+    return view('products.manage', ['products' => Product::all()]);
   }
 }

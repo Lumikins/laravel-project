@@ -10,17 +10,17 @@
             <ul class="flex">
               @if (($product->category_id) == 1)
               <li class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                <a href="#">Man</a>
+                <a href="#">Homme</a>
               </li>
               @else
               <li class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                <a href="#">Woman</a>
+                <a href="#">Femme</a>
               </li>
               @endif
             </ul>
             @if ($product['is_sale'])
             <div class="text-lg mt-4 uppercase">
-              <i class="fa-solid fa-hand-holding-dollar"></i> on sale
+              <i class="fa-solid fa-hand-holding-dollar"></i> Soldes
             </div>
             @endif
         </div>

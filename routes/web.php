@@ -3,8 +3,6 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Product;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +29,11 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->midd
 // update product
 Route::put('/products/{product}', [ProductController::class, 'update'])->middleware('auth');
 
-// delete product
-Route::delete('/products/{product}', [ProductController::class, 'destroy'])->middleware('auth');
-
 // manage products
 Route::get('/products/manage', [ProductController::class, 'manage'])->middleware('auth');
+
+// delete product
+Route::delete('/products/{product}', [ProductController::class, 'destroy'])->middleware('auth');
 
 // single product display
 Route::get('/products/{product}', [ProductController::class, 'show']);

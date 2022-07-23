@@ -8,29 +8,32 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
   // show login form
-  public function login(){
+  public function login()
+  {
     return view('users.login');
   }
 
   // user authentication
-  public function authenticate(Request $request){
+  public function authenticate(Request $request)
+  {
     $formFields = $request->validate([
-    'email' => ['required', 'email'],
-    'password' => 'required'
+      'email' => ['required', 'email'],
+      'password' => ['required']
     ]);
 
-    if(Auth::attempt($formFields)) {
+    if (Auth::attempt($formFields)) {
       $request->session()->regenerate();
-      return redirect('/')->with('message', 'Logged in successfully');
+      return redirect()->intended('/')->with('message', 'Utilisateur connecté');
     }
-    return back()->withErrors(['email'=>'Invalid credentials'])->onlyInput('email');
+    return back()->withErrors(['email' => 'Invalid credentials'])->onlyInput('email');
   }
-    
+
   // logout user
-  public function logout(Request $request){
+  public function logout(Request $request)
+  {
     auth()->logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-    return redirect('/')->with('message', 'User logged out');
+    return redirect('/')->with('message', 'Utilisateur déconnecté');
   }
 }

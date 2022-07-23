@@ -1,7 +1,7 @@
 <x-layout>
   <x-card-frame class="p-10">
     <header>
-      <h1 class="text-3xl text-center font-bold my-6 uppercase">Manage Gigs</h1>
+      <h1 class="text-3xl text-center font-bold my-6 uppercase">Gérer les produits</h1>
     </header>
     <table class="w-full table-auto rounded-sm">
       <tbody>
@@ -13,7 +13,7 @@
           </td>
           <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
             <a href="/products/{{$product->id}}/edit" class="text-blue-400 px-6 py-2 rounded-xl">
-              <i class="fa-solid fa-pen-to-square"></i>Edit
+              <i class="fa-solid fa-pen-to-square mx-2"></i>Modifier
             </a>
           </td>
           <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
@@ -21,7 +21,7 @@
               @csrf
               @method('DELETE')
               <button class="text-red-500">
-                <i class="fa-solid fa-trash">Delete</i>
+                <i class="fa-solid fa-trash mx-2"></i>Supprimer
               </button>
             </form>
           </td>

@@ -33,24 +33,24 @@
           <ul class="flex space-x-6 mr-6 text-lg">
             @auth
             <li>
-              <span class="font-bold uppercase">
-                Welcome {{auth()->user()->name}}
+              <span>
+                Bienvenu.e, {{auth()->user()->name}}
               </span>
             </li>
             <li>
-              <a href="/products/manage" class="hover:text-weFashion"><i class="fa-solid fa-gear mr-2"></i>Manage Product</a>
+              <a href="/products/manage" class="hover:text-weFashion"><i class="fa-solid fa-gear mr-2"></i>Gérer les produits</a>
             </li>
-            <li>
+            <li class="hover:text-weFashion cursor-pointer">
               <form class="inline" method="POST" action="/logout">
                 @csrf
                 <button type="submit">
-                  <i class="fa-solid fa-door-closed">Logout</i>
-                </button>
+                  <i class="fa-solid fa-door-closed mr-2"></i>
+                </button>Déconnexion
               </form>
             </li>
             @else
             <li>
-              <a href="/login" class="hover:text-weFashion"><i class="fa-solid fa-right-to-bracket mr-2"></i>Login</a>
+              <a href="/login" class="hover:text-weFashion"><i class="fa-solid fa-right-to-bracket mr-2"></i>Connexion</a>
             </li>
             @endauth
           </ul>
@@ -61,7 +61,7 @@
     @auth
     <footer class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-weFashion text-white h-24 mt-24 opacity-90 md:justify-center">
       <p class="ml-2">footer according to specifications</p>
-      <a href="/products/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">Add product</a>
+      <a href="/products/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">Ajouter un produit</a>
     </footer>
     @else
     <footer class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-weFashion text-white h-24 mt-24 opacity-90 md:justify-center">
