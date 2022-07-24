@@ -21,6 +21,6 @@ In order to run the project on your machine:
 - download the project folder to your computer, or clone the repository.
 - Launch Visual Studio Code.
 - Open the terminal and run the following commands:
---npm i (install all dependencies used in this project)
---php artisan migrate:refresh --seed (run all Laravel migrations, and create random product data in the Data Base)
---php artisan serve (run the Laravel development server address, usually on: http://127.0.0.1:8000)
+- 1. npm i (install all dependencies used in this project)
+- 2. php artisan migrate:refresh --seed (run all Laravel migrations, and create random product data in the Data Base)
+- 3. php artisan serve (run the Laravel development server address, usually on: http://127.0.0.1:8000)
